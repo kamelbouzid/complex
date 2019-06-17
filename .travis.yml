@@ -1,0 +1,26 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t kamelbouzid/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run kamelbouzid/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t kamelbouzid/multi-client ./client
+  - docker build -t kamelbouzid/multi-nginx ./nginx
+  - docker build -t kamelbouzid/multi-server ./server
+  - docker build -t kamelbouzid/multi-worker ./worker
+
+#Log in to Docker CLI
+
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+#Take those images and push them to decker hub
+
+- docker push kamelbouzid/multi-client
+- docker push kamelbouzid/multi-nginx
+- docker push kamelbouzid/multi-server
+- docker push kamelbouzid/multi-worker
