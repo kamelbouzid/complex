@@ -1,7 +1,10 @@
 sudo: required
 services:
   - docker
-
+branches:
+  only:
+  - gh-pages
+  - /.*/
 before_install:
   - docker build -t kamelbouzid/react-test -f ./client/Dockerfile.dev ./client
 
