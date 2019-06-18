@@ -1,10 +1,7 @@
 sudo: required
 services:
   - docker
-branches:
-  only:
-  - gh-pages
-  - /.*/
+
 before_install:
   - docker build -t kamelbouzid/react-test -f ./client/Dockerfile.dev ./client
 
@@ -20,11 +17,11 @@ after_success:
 
 #Log in to Docker CLI
 
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 #Take those images and push them to docker hub
 
-- docker push kamelbouzid/multi-client
-- docker push kamelbouzid/multi-nginx
-- docker push kamelbouzid/multi-server
-- docker push kamelbouzid/multi-worker
+  - docker push kamelbouzid/multi-client
+  - docker push kamelbouzid/multi-nginx
+  - docker push kamelbouzid/multi-server
+  - docker push kamelbouzid/multi-worker
