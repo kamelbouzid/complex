@@ -11,10 +11,10 @@ script:
 
 
 after_success:
-  - docker build -t kamelbouzid/multi-client ./client
-  - docker build -t kamelbouzid/multi-nginx ./nginx
-  - docker build -t kamelbouzid/multi-server ./server
-  - docker build -t kamelbouzid/multi-worker ./worker
+  - docker build -t kamelb/multi-client ./client
+  - docker build -t kamelb/multi-nginx ./nginx
+  - docker build -t kamelb/multi-server ./server
+  - docker build -t kamelb/multi-worker ./worker
 
 #Log in to Docker CLI
 
@@ -22,7 +22,7 @@ after_success:
 
 #Take those images and push them to docker hub
 
-  - docker push kamelbouzid/multi-client
-  - docker push kamelbouzid/multi-nginx
-  - docker push kamelbouzid/multi-server
-  - docker push kamelbouzid/multi-worker
+  - docker push kamelb/multi-client
+  - docker push kamelb/multi-nginx
+  - docker push kamelb/multi-server
+  - docker push kamelb/multi-worker
