@@ -22,7 +22,7 @@ after_success:
 
 #Take those images and push them to docker hub
 
-  - sudo docker push kamelbouzid/multi-client
-  - sudo docker push kamelbouzid/multi-nginx
-  - sudo docker push kamelbouzid/multi-server
-  - sudo docker push kamelbouzid/multi-worker
+  - docker push kamelbouzid/multi-client
+  - docker push kamelbouzid/multi-nginx
+  - docker push kamelbouzid/multi-server
+  - docker push kamelbouzid/multi-worker
